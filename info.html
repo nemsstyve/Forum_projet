@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/img/forum.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>FORUM</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+    body {
+        justify-content: center;
+        align-items: center;
+        font-family: 'Montserrat', sans-serif;
+        /* height: 100vh;
+    margin: -20px 0 15px; */
+        overflow-x: hidden;
+        background: url(./assets/img/Japon.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    
+    .be-comment-block {
+        margin-bottom: 50px !important;
+        border: 1px solid #edeff2;
+        border-radius: 2px;
+        padding: 50px 70px;
+        border: 1px solid #ffffff;
+    }
+    
+    .comments-title {
+        font-size: 16px;
+        color: #262626;
+        margin-bottom: 15px;
+        font-family: 'Conv_helveticaneuecyr-bold';
+    }
+    
+    .be-img-comment {
+        width: 60px;
+        height: 60px;
+        float: left;
+        margin-bottom: 15px;
+    }
+    
+    .be-ava-comment {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+    
+    .be-comment-content {
+        margin-left: 80px;
+    }
+    
+    .be-comment-content span {
+        display: inline-block;
+        width: 49%;
+        margin-bottom: 15px;
+    }
+    
+    .be-comment-name {
+        font-size: 13px;
+        font-family: 'Conv_helveticaneuecyr-bold';
+    }
+    
+    .be-comment-content a {
+        color: #383b43;
+    }
+    
+    .be-comment-content span {
+        display: inline-block;
+        width: 49%;
+        margin-bottom: 15px;
+    }
+    
+    .be-comment-time {
+        text-align: right;
+    }
+    
+    .be-comment-time {
+        font-size: 11px;
+        color: #b4b7c1;
+    }
+    
+    .be-comment-text {
+        font-size: 13px;
+        line-height: 18px;
+        color: #7a8192;
+        display: block;
+        background: #f6f6f7;
+        border: 1px solid #edeff2;
+        padding: 15px 20px 20px 20px;
+        overflow-x: auto;
+    }
+    
+    textarea {
+        margin-top: 3vh;
+        margin-bottom: 3vh;
+        resize: none;
+    }
+    
+    button.like {
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        line-heigth: 50px;
+        border-radius: 50%;
+        color: #009688;
+        background-color: rgba(38, 166, 154, 0.3);
+        border-color: #009688;
+        border-width: 1px;
+        font-size: 15px;
+        margin-top: 4vh;
+    }
+    
+    button.dislike {
+        width: 30px;
+        height: 30px;
+        margin: 0 auto;
+        line-heigth: 50px;
+        border-radius: 50%;
+        color: #ff5252;
+        background-color: rgba(255, 138, 128, 0.3);
+        border-color: #ff5252;
+        border-width: 1px;
+        font-size: 15px;
+        margin-top: 4vh;
+    }
+    
+    .buttonComment {
+        margin-top: 3vh;
+        position: relative;
+        left: 41%;
+    }
+    
+     ::selection {
+        background: #89c0ee;
+    }
+</style>
+
+<body>
+    <nav class="navbar navbar-expand-sm" style="background-color: #191D4C;">
+        <ul class="nav navbar-nav">
+            <div class="collapse navbar-collapse justify-content-start">
+                <li class="nav-item">
+                    <a class="nav-link" href="/index" style="color: #89c0ee;">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile" style="color: #89c0ee;">Profile</a>
+                </li>
+        </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #89c0ee;"></i>FORUM</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="color: #df3131;"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {{range .Post}}
+    <h1 style="text-align: center; margin-top: 3%;">Title : {{.Title}} | Author : {{.Author}} | ID : #{{.Id}} {{if eq .Filter 1}}<span class="badge bg-primary">Informatique</span>{{end}}{{if eq .Filter 2}}<span class="badge bg-secondary">Sport</span>{{end}}{{if eq .Filter 3}}<span class="badge bg-success">Music</span>{{end}}{{if
+        eq .Filter 4}}<span class="badge bg-info">Video games</span>{{end}}{{if eq .Filter 5}}<span class="badge bg-danger">Food</span>{{end}}</h1>
+    <h2 style="text-align: center; margin-top: 3%;">{{.Content}}</h2>
+    <div class="button_like text-center">
+        <a href="/like/{{.Id}}"><button class="like">
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+              </button></a>
+        <span>{{.Like}}</span>
+        <a href="/dislike/{{.Id}}" style="text-decoration:none;"><button class="dislike" >
+                <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+              </button></a>
+        <span>{{.Dislike}}</span>
+    </div>
+    {{end}}
+    <div class="container">
+        <div class="be-comment-block">
+            <h1 class="comments-title">Comments : </h1>
+            <div class="be-comment">
+                {{range .Results}}
+                <div class="be-img-comment">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                </div>
+                <div class="be-comment-content">
+
+                    <span class="be-comment-name">
+            <a href="/user/{{.AuthorComment}}">{{.AuthorComment}}</a>
+            </span>
+                    <span class="be-comment-time">
+            <i class="fa fa-clock-o"></i>
+          {{.DateComment}}
+          </span>
+                    <p class="be-comment-text">
+                        {{.ContentComment}}
+                    </p>
+                </div>
+                {{end}}
+            </div>
+            <form>
+                <textarea id="commentArea" name="commentArea" rows="4" cols="110" placeholder="Write your comment" required></textarea>
+                <div class="buttonComment">
+                    <button type="submit" class="btn btn-dark" style="color: #191D4C; background-color: #89c0ee; "><i class="fas fa-check"></i> Send Comment</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+PROJET FORUM
+
+
+                                    ////////  Link  /////////  
+
+Like used in us project:
+
+[ BACKEND ]
+
+##[GOLANG] ("https://golang.org")
+
+*Api
+*Database:
+*Sqlite3:
+*https://github.com/mattn/go-sqlite3/blob/master/_example/simple/simple.go
+*https://gowebexamples.com/mysql-database/
+*https://siongui.github.io/2016/01/09/go-sqlite-example-basic-usage/
+*https://pkg.go.dev/github.com/mattn/go-sqlite3#readme-api-reference
+*https://pkg.go.dev/github.com/gorilla/sessions
+*https://www.metal3d.org/blog/2014/cr%C3%A9er-une-api-en-go-avec-gorilla/
+
+
+*Criptage:
+
+*https://gowebexamples.com/password-hashing/
+*https://pkg.go.dev/golang.org/x/crypto/bcrypt
+
+cookies session:
+
+*https://medium.com/wesionary-team/cookies-and-session-management-using-cookies-in-go-7801f935a1c8
+
+
+[ FRONTEND ]  
+
+
+*HTML/CSS
+
+*https://www.w3schools.com/html/
+*https://www.w3schools.com/css/default.asp
+
+
+
+
+
+
+
+
+

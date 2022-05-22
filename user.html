@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/img/forum.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>FORUM</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+        body {
+            display: flex;
+            /* align-items: center; */
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
+            height: 100vh;
+            overflow: hidden;
+            background: url(assets/img/Japon.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        
+        h1 {
+            margin-top: 3.5%;
+            color: #191D4C;
+            text-align: center;
+        }
+        
+        h4 {
+            text-align: center;
+        }
+        
+        p {
+            text-align: center;
+        }
+        
+        .card {
+            /* Add shadows to create the "card" effect */
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 20%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        /* On mouse-over, add a deeper shadow */
+        
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+        }
+        /* Add some padding inside the card container */
+        
+        .container {
+            padding: 2px 16px;
+        }
+        
+        .container h4 {
+            color: #191D4C;
+        }
+        
+         ::selection {
+            background: #565eb3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm" style="background-color: #191D4C;">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/index" style="color: #89c0ee;">Menu</a>
+            </li>
+        </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #89c0ee;"></i>FORUM</a>
+                </li>
+            </ul>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="color: #df3131;"><i class="fas fa-sign-out-alt"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {{range .}}
+    <h1>Profile of : {{.Name}}</h1>
+    <div class="card">
+        <img src="{{.Image}}" type="png" alt="Avatar" style="width:100%">
+        <div class="container">
+            <h4><b>Informations</b></h4>
+            <p>Post created : {{.Post}}</p>
+            <p>Followers : {{.Sub}}</p>
+        </div>
+    </div>
+    {{end}}
+</body>
+
+</html>

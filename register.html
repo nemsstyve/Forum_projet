@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/register.css">
+    <link rel="icon" type="image/png" href="assets/img/forum.png" />
+    <title>FORUM</title>
+</head>
+
+<body>
+    <div class='stars'></div>
+    <div class='twinkling'></div>
+    <h2>Welcome to Kaiwa</h2>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form method="POST" action="/register">
+                <h1>Create Account</h1>
+                <br>
+                <input type="text" placeholder="Pseudo" name="pseudoCreate" id="pseudoCreate" required/>
+                <input type="email" placeholder="Email" name="emailCreate" id="emailCreate" required/>
+                <input type="password" placeholder="Password" name="passwordCreate" id="passwordCreate" required pattern=".{6,}">
+                <input type="text" placeholder="Image URL (if you want)" name="imageCreate" id="imageCreate" />
+                <h6>Password must be six or more characters</h6>
+                <br>
+                <button id="createButton">Create</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form>
+                <h1>Login</h1>
+                <br>
+                <input type="text" placeholder="Pseudo" name="pseudoLog" id="pseudoLogin" required/>
+                <input type="password" placeholder="Password" name="passwordLog" id="passwordLogin" required/>
+                <br>
+                <button id="loginButton">Login</button>
+                <p>Faire un tour sans s'inscrire <a href="/nologin"><u>ici</u></a></p>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your login details</p>
+                    <button class="ghost" id="signIn">Login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Community!</h1>
+                    <p>Enter your personal details and start chatting with another people</p>
+                    <button class="ghost" id="signUp">Create an account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+        // const pseudoCreate = document.getElementById('pseudoCreate').value;
+        // const emailCreate = document.getElementById('emailCreate').value;
+        // const passwordCreate = document.getElementById('passwordCreate').value;
+        // // const pseudoLogin = document.getElementById('pseudoLogin');
+        // // const emailLogin = document.getElementById('emailLogin');
+        // // const passwordLogin = document.getElementById('passwordLogin');
+        // // const buttonLogin = document.getElementById('loginButton')
+        // const buttonCreate = document.getElementById('createButton')
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+
+</body>
+
+</html>
