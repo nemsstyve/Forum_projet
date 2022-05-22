@@ -1,104 +1,104 @@
 # Forum_projet
-This project consists in creating a web forum that allows :
+Ce projet consiste à créer un forum web qui permet :
 
-    communication between users.
-    associating categories to posts.
-    liking and disliking posts and comments.
-    filtering posts.
+    communication entre les utilisateurs.
+    associer des catégories aux messages.
+    aimer et ne pas aimer les messages et les commentaires.
+    filtrage des messages.
 
 
 ## SQLite
 
-In order to store the data in your forum (like users, posts, comments, etc.) you will use the database library SQLite.
+Afin de stocker les données de votre forum (comme les utilisateurs, les messages, les commentaires, etc.), vous utiliserez la bibliothèque de base de données SQLite.
 
-SQLite is a popular choice as an embedded database software for local/client storage in application software such as web browsers. It enables you to create a database as well as controlling it by using queries.
+SQLite est un choix populaire en tant que logiciel de base de données intégré pour le stockage local/client dans les logiciels d'application tels que les navigateurs Web. Il vous permet de créer une base de données ainsi que de la contrôler à l'aide de requêtes.
 
-To structure your database and to achieve better performance we highly advise you to take a look at the entity relationship diagram and build one based on your own database.
+Pour structurer votre base de données et obtenir de meilleures performances, nous vous conseillons vivement de consulter le diagramme de relation d'entité et d'en créer un basé sur votre propre base de données.
 
-    You must use at least one SELECT, one CREATE and one INSERT queries.
+    Vous devez utiliser au moins une requête SELECT, une CREATE et une INSERT.
 
-To know more about SQLite you can check the SQLite page.
+Pour en savoir plus sur SQLite, vous pouvez consulter la page SQLite.
 
 
-## Authentication
+## Authentification
 
-In this segment the client must be able to register as a new user on the forum, by inputting their credentials. You also have to create a login session to access the forum and be able to add posts and comments.
+Dans ce segment, le client doit pouvoir s'inscrire en tant que nouvel utilisateur sur le forum, en saisissant ses informations d'identification. Vous devez également créer une session de connexion pour accéder au forum et pouvoir ajouter des messages et des commentaires.
 
-You should use cookies to allow each user to have only one opened session. Each of this sessions must contain an expiration date. It is up to you to decide how long the cookie stays "alive". The use of UUID is a Bonus task.
+Vous devez utiliser des cookies pour permettre à chaque utilisateur d'avoir une seule session ouverte. Chacune de ces sessions doit contenir une date d'expiration. C'est à vous de décider combien de temps le cookie reste "vivant". L'utilisation de l'UUID est une tâche bonus.
 
-Instructions for user registration:
+Instructions pour l'enregistrement de l'utilisateur :
 
-    Must ask for email
-        When the email is already taken return an error response.
-    Must ask for username
-    Must ask for password
-        The password must be encrypted when stored (this is a Bonus task)
+    Doit demander un e-mail
+        Lorsque l'e-mail est déjà pris, renvoyez une réponse d'erreur.
+    Doit demander un nom d'utilisateur
+    Doit demander un mot de passe
+        Le mot de passe doit être crypté lorsqu'il est stocké (il s'agit d'une tâche bonus)
 
-The forum must be able to check if the email provided is present in the database and if all credentials are correct. It will check if the password is the same with the one provided and, if the password is not the same, it will return an error response.
+Le forum doit être en mesure de vérifier si l'e-mail fourni est présent dans la base de données et si tous les identifiants sont corrects. Il vérifiera si le mot de passe est le même que celui fourni et, si le mot de passe n'est pas le même, il renverra une réponse d'erreur.
 
 
 ## Communication
 
-In order for users to communicate between each other, they will have to be able to create posts and comments.
+Pour que les utilisateurs puissent communiquer entre eux, ils devront pouvoir créer des posts et des commentaires.
 
-    Only registered users will be able to create posts and comments.
-    When registered users are creating a post they can associate one or more categories to it.
-        The implementation and choice of the categories is up to you.
-    The posts and comments should be visible to all users (registered or not).
-    Non-registered users will only be able to see posts and comments.
-
-
-##Likes and Dislikes
-
-Only registered users will be able to like or dislike posts and comments.
-
-The number of likes and dislikes should be visible by all users (registered or not).
+    Seuls les utilisateurs enregistrés pourront créer des publications et des commentaires.
+    Lorsque les utilisateurs enregistrés créent une publication, ils peuvent y associer une ou plusieurs catégories.
+        La mise en œuvre et le choix des catégories vous appartient.
+    Les publications et les commentaires doivent être visibles par tous les utilisateurs (inscrits ou non).
+    Les utilisateurs non enregistrés ne pourront voir que les publications et les commentaires.
 
 
-## Filter
+## Aime et n'aime pas
 
-You need to implement a filter mechanism, that will allow users to filter the displayed posts by :
+Seuls les utilisateurs enregistrés pourront aimer ou ne pas aimer les publications et les commentaires.
 
-    categories
-    created posts
-    liked posts
+Le nombre de likes et dislikes doit être visible par tous les utilisateurs (inscrits ou non).
 
-You can look at filtering by categories as subforums. A subforum is a section of an online forum dedicated to a specific topic.
 
-Note that the last two are only available for registered users and must refer to the logged in user.
+## Filtre
+
+Vous devez implémenter un mécanisme de filtrage, qui permettra aux utilisateurs de filtrer les publications affichées par :
+
+    catégories
+    messages créés
+    messages aimés
+
+Vous pouvez regarder le filtrage par catégories en tant que sous-forums. Un sous-forum est une section d'un forum en ligne dédiée à un sujet spécifique.
+
+Notez que les deux derniers ne sont disponibles que pour les utilisateurs enregistrés et doivent faire référence à l'utilisateur connecté.
 
 
 ## Docker
 
-For the forum project you must use Docker. You can read about docker basics in the ascii-art-web-dockerize subject.
+Pour le projet de forum, vous devez utiliser Docker. Vous pouvez en savoir plus sur les bases de Docker dans le sujet ascii-art-web-dockerize.
 
 
-## Instructions
+## Des instructions
 
-    You must use SQLite.
-    You must handle website errors, HTTP status.
-    You must handle all sort of technical errors.
-    The code must respect the good practices.
-    It is recommended to have test files for unit testing.
+    Vous devez utiliser SQLite.
+    Vous devez gérer les erreurs de site Web, le statut HTTP.
+    Vous devez gérer toutes sortes d'erreurs techniques.
+    Le code doit respecter les bonnes pratiques.
+    Il est recommandé d'avoir des fichiers de test pour les tests unitaires.
 
 
-## Allowed packages
+## Forfaits autorisés
 
-    All standard Go packages are allowed.
+    Tous les forfaits Go standard sont autorisés.
     sqlite3
     bcrypt
     UUID
 
-This project will help you learn about:
+Ce projet vous aidera à découvrir :
 
-    The basics of web :
+    Les bases du web :
         HTML
         HTTP
-        Sessions and cookies
-    Using and setting up Docker
-        Containerizing an application
-        Compatibility/Dependency
-        Creating images
-    SQL language
-        Manipulation of databases
-    The basics of encryption
+        Sessions et cookies
+    Utiliser et configurer Docker
+        Conteneuriser une application
+        Compatibilité/Dépendance
+        Créer des images
+    Langage SQL
+        Manipulation de bases de données
+    Les bases du cryptage
