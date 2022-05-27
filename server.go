@@ -70,7 +70,7 @@ var store = sessions.NewCookieStore([]byte("mysession"))
 
 // Initialise DataBase, and create it with his tables
 func initDatabase(database string) *sql.DB {
-	db, err := sql.Open("sqlite3", "assets/base_de_donne/db.db")
+	db, err := sql.Open("sqlite3", "assets/Database/db.db")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -122,7 +122,7 @@ func initDatabase(database string) *sql.DB {
 
 //Get the last id from the table post
 func getBookLastID() int {
-	db := initDatabase("assets/base_de_donne/db.db/")
+	db := initDatabase("assets/Database/db.db/")
 	var id int
 
 	err := db.QueryRow("select ifnull(max(id), 0) as id from post").Scan(&id)
@@ -158,7 +158,7 @@ func insertIntoLike(db *sql.DB, postid string, author string) (int64, error) {
 
 //Get all data from the struct Post (for the post data). Useful for send data in the html page with templates
 func getPostData() {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var temp Post
 
 	rows, _ :=
@@ -172,7 +172,7 @@ func getPostData() {
 
 //Get all data from the struct Post (for the comment data). Useful for send data in the html page with templates
 func getCommentData(idInfo int) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var temp Post
 
 	rows, _ :=
@@ -186,7 +186,7 @@ func getCommentData(idInfo int) {
 
 //Get all data from the struct Post (for the post data). Useful for send data in the html page with templates
 func getPostDataById(idInfo int) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var temp PostData
 
 	rows, _ :=
@@ -200,7 +200,7 @@ func getPostDataById(idInfo int) {
 
 //Get all data from the struct Post and filters the data
 func getPostDataByFilter(filter int) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var temp Post
 
 	rows, _ :=
@@ -213,7 +213,7 @@ func getPostDataByFilter(filter int) {
 }
 
 func getUserInfo(userInfo string) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var temp Login
 
 	rows, _ :=
@@ -226,7 +226,7 @@ func getUserInfo(userInfo string) {
 }
 
 func getUserInfoByCookie(username string) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var temp Login
 
 	rows, _ :=
@@ -240,7 +240,7 @@ func getUserInfoByCookie(username string) {
 
 //This function compare the Pseudo and the password send by the user.
 func login(LogPseudo string, LogPassword string) bool {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var pseudo string
 	var password string
 	var result = false
@@ -257,7 +257,7 @@ func login(LogPseudo string, LogPassword string) bool {
 
 //This function check if you have already vote or no (like)
 func checkLike(username string, likeId string) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var author string
 	var postid int
 	var like int
@@ -285,7 +285,7 @@ func checkLike(username string, likeId string) {
 
 //This function check if you have already vote or no (dislike)
 func checkDislike(username string, likeId string) {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 	var author string
 	var postid int
 	var like int
@@ -325,7 +325,7 @@ func CheckPasswordHash(password, hash string) bool {
 
 //The function considers whether the nickname / mail is already in use
 func register(RegisterPseudo string, RegisterEmail string) bool {
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 
 	var pseudo string
 	var email string
@@ -398,7 +398,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	passwordLog := r.FormValue("passwordLog")
 
 	user.Image = "http://marclimoservices.com/wp-content/uploads/2017/05/facebook-default.png"
-	db := initDatabase("assets/base_de_donne/db.db")
+	db := initDatabase("assets/Database/db.db")
 
 	hash, _ := HashPassword(passwordForm)
 	//register conditions
@@ -474,7 +474,7 @@ func dislikeHandler(w http.ResponseWriter, r *http.Request) {
 
 //HandleFunc for post.html (Get and post data)
 func postHandler(w http.ResponseWriter, r *http.Request) {
-	db := initDatabase("assets/base_de_donne/db.db/")
+	db := initDatabase("assets/Database/db.db/")
 	titleForm := r.FormValue("inputEmail")
 	contentForm := r.FormValue("inputPassword")
 	session, _ := store.Get(r, "mysession")
@@ -519,7 +519,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 
 //HandleFunc for info.html (Get and post data)
 func infoHandler(w http.ResponseWriter, r *http.Request) {
-	db := initDatabase("assets/base_de_donne/db.db/")
+	db := initDatabase("assets/Database/db.db/")
 	idInfo, _ := strconv.Atoi(r.URL.Path[6:]) //Get the 6th element of the url and convert it into a int
 	contentComment := r.FormValue("commentArea")
 	session, _ := store.Get(r, "mysession")
